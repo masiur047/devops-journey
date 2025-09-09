@@ -1,5 +1,4 @@
-# devops-journey
-# DevOps Journey 🚀
+# devops-journey🚀
 
 ## 📌 Day 1: Introduction to DevOps
 
