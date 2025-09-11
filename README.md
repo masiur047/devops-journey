@@ -98,3 +98,49 @@ Start stopped container again:
 
 docker ps -a
 docker start -ai <container_name_or_id>
+
+
+## Day 5: Shell Scripting for Automation
+
+### ✅ What I Learned
+- Basics of creating and running shell scripts in Linux.
+- Using `echo` to print messages.
+- Automating cleanup tasks with `find`.
+- Monitoring system resources (CPU, memory, disk).
+
+### 📝 Hands-On Tasks
+1. **greet.sh**  
+   Prints a welcome message.  
+   ```bash
+   #!/bin/bash
+   echo "Hello Mashu, welcome to DevOps Day 5!"
+cleanup.sh
+Deletes .tmp files older than 2 days from /tmp.
+
+bash
+Copy code
+#!/bin/bash
+find /tmp -name "*.tmp" -type f -mtime +2 -exec rm -f {} \;
+echo "Cleanup complete."
+monitor.sh
+Displays CPU, memory, and disk usage.
+
+bash
+Copy code
+#!/bin/bash
+echo "===== System Monitoring ====="
+echo "CPU Usage:"
+top -bn1 | grep "Cpu(s)" | awk '{print $2 + $4 "%"}'
+
+echo ""
+echo "Memory Usage:"
+free -h | awk '/Mem:/ {print $3 " used / " $2 " total"}'
+
+echo ""
+echo "Disk Usage:"
+df -h --total | grep 'total' | awk '{print $3 " used / " $2 " total (" $5 " used)"}'
+echo "============================="
+🚀 Outcome
+Learned how to automate repetitive tasks using Bash.
+
+Created simple scripts to greet, clean temporary files, and monitor system performance.
