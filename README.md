@@ -144,3 +144,66 @@ echo "============================="
 Learned how to automate repetitive tasks using Bash.
 
 Created simple scripts to greet, clean temporary files, and monitor system performance.
+
+## Day 6–7: Mini Project (GitHub + Shell Scripts)
+
+### ✅ What I Learned
+- How to create and manage a GitHub repository for shell scripts.
+- Basics of Git (clone, add, commit, push).
+- Using shell scripts for simple automation:
+  - Logging messages with timestamps.
+  - Rotating logs to keep them manageable.
+  - Creating project backups.
+
+### 📝 Hands-On Tasks
+1. **hello_log.sh**  
+   Logs "Hello DevOps" with timestamp into a file.  
+   ```bash
+   #!/bin/bash
+   LOG_DIR="./logs"
+   LOG_FILE="$LOG_DIR/devops.log"
+
+   mkdir -p $LOG_DIR
+   echo "$(date '+%Y-%m-%d %H:%M:%S') - Hello DevOps" >> $LOG_FILE
+
+   echo "Log entry added to $LOG_FILE"
+rotate_logs.sh
+Rotates devops.log if it is larger than 1KB, moving old logs into an archive folder.
+
+bash
+Copy code
+#!/bin/bash
+LOG_DIR="./logs"
+LOG_FILE="$LOG_DIR/devops.log"
+ARCHIVE_DIR="$LOG_DIR/archive"
+
+mkdir -p $ARCHIVE_DIR
+
+if [ -f "$LOG_FILE" ] && [ $(stat -c%s "$LOG_FILE") -gt 1024 ]; then
+    TIMESTAMP=$(date '+%Y%m%d_%H%M%S')
+    mv $LOG_FILE $ARCHIVE_DIR/devops_$TIMESTAMP.log
+    echo "Log rotated. Archived as devops_$TIMESTAMP.log"
+else
+    echo "No rotation needed."
+fi
+backup.sh
+Creates a .tar.gz backup of the project directory with a timestamp.
+
+bash
+Copy code
+#!/bin/bash
+SRC_DIR="."
+BACKUP_DIR="./backups"
+TIMESTAMP=$(date '+%Y%m%d_%H%M%S')
+BACKUP_FILE="$BACKUP_DIR/devops_backup_$TIMESTAMP.tar.gz"
+
+mkdir -p $BACKUP_DIR
+tar -czf $BACKUP_FILE $SRC_DIR
+
+echo "Backup created at $BACKUP_FILE"
+🚀 Outcome
+Learned to set up a GitHub repo for DevOps practice.
+
+Automated logging, log rotation, and backups using Bash scripts.
+
+Gained experience in structuring small projects with automation.
