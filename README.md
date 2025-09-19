@@ -247,3 +247,50 @@ jobs:
     - name: Run sample script
       run: echo "🚀 Hello Mashu, your first CI pipeline is running!"
 ✅ Whenever I push to the main branch, this workflow runs automatically in the Actions tab.
+
+
+## Day 9: Jenkins (Hello World Pipeline)
+
+Today I explored **Jenkins**, one of the most popular CI/CD tools.
+
+### 🔹 Key Learnings
+- **Jenkins** is an open-source automation server used for Continuous Integration & Continuous Delivery (CI/CD).
+- It can be installed on Windows/Linux or run inside Docker.
+- Provides flexibility with **plugins** and pipelines defined using **Groovy scripts (Jenkinsfile)**.
+
+### 🔹 Jenkins Setup
+- Installed Jenkins using Docker:
+  ```bash
+  docker run -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts
+Accessed Jenkins at http://localhost:8080.
+
+Used the initial admin password and installed recommended plugins.
+
+Created my first admin user.
+
+🔹 My First Jenkins Pipeline
+Created a new pipeline job with the following script:
+
+groovy
+Copy code
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo '🚀 Hello Mashu, Welcome to Jenkins Pipeline!'
+            }
+        }
+    }
+}
+✅ When I ran the pipeline, Jenkins successfully printed the "Hello World" message in the console output.
+
+🔹 Jenkins vs GitHub Actions
+
+Feature	        Jenkins	                GitHub Actions
+------------    ---------------------   ------------------
+Installation	  Self-hosted	            Cloud-based
+Plugins	        1800+	                  Limited, built-in
+Setup           time	Longer	          Very quick
+Customisation	  Very flexible	          Simpler
+Best            for	Large enterprises	  GitHub projects
