@@ -207,3 +207,43 @@ Learned to set up a GitHub repo for DevOps practice.
 Automated logging, log rotation, and backups using Bash scripts.
 
 Gained experience in structuring small projects with automation.
+
+## Day 8: Continuous Integration & Continuous Delivery (CI/CD)
+
+Today I learned the basics of **CI/CD** and created my first GitHub Actions pipeline.  
+
+### 🔹 Key Learnings
+- **CI (Continuous Integration):** Developers merge code frequently, and each change is automatically built & tested.  
+- **CD (Continuous Delivery/Deployment):** Automates the process of deploying software after testing.  
+- **Pipeline Stages:**  
+  1. **Build** → Compile code & prepare artifacts  
+  2. **Test** → Run unit & integration tests  
+  3. **Deploy** → Deliver the build to staging/production  
+
+### 🔹 Tools for CI/CD
+- GitHub Actions (used today 🚀)  
+- Jenkins, GitLab CI/CD, Azure Pipelines, TeamCity  
+
+### 🔹 My First GitHub Actions Workflow
+I created a `.github/workflows/ci.yml` file in my repo:
+
+```yaml
+name: DevOps Scripts CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run sample script
+      run: echo "🚀 Hello Mashu, your first CI pipeline is running!"
+✅ Whenever I push to the main branch, this workflow runs automatically in the Actions tab.
